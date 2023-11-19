@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #12111A;
+  font-family: -apple-system, Poppins, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+  background: #3A394080
+}
