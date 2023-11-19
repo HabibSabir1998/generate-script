@@ -43,10 +43,12 @@ const Navbar = () => {
             </div>
           </Box>
           <Box sx={navbarUserGroup}>
-            <div style={{ marginRight: 6 }}>
-              <Typography sx={navbarUserName}>Habib</Typography>
-              <Typography sx={navbarChangeProfile}>Change Profile</Typography>
-            </div>
+            <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+              <div style={{ marginRight: 6 }}>
+                <Typography sx={navbarUserName}>Habib</Typography>
+                <Typography sx={navbarChangeProfile}>Change Profile</Typography>
+              </div>
+            </Box>
 
             <IconButton sx={{ p: 0 }}>
               <Avatar alt="Habib Sabir" src="/static/images/avatar/2.jpg" />
