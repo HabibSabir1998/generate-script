@@ -33,14 +33,15 @@ const myTheme = createTheme({
         paper: {
           backgroundColor: '#3A3940',
           color: '#fff',
-          
+          borderRadius: 5
         },
         option: {
           '& .MuiAutocomplete-option': {
             background: '#3A394080',
+            fontFamily: 'Poppins',
           },
           '&.Mui-focused ': {
-            backgroundColor: '#fff',
+            backgroundColor: '#523FD7',
           },
           '&[data-focus="true"]': {
             backgroundColor: '#3A394080',

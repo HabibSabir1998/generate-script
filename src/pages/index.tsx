@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import { Box, Chip, IconButton, Slider } from '@mui/material'
 import Navbar from '../components/Navbar'
@@ -9,6 +8,18 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 
 import { useState } from 'react'
+import {
+  autocompleteInput,
+  autocompleteStyle,
+  backButton,
+  footerBackButton,
+  footerNextButton,
+  nextButton,
+  nextButtonArrowRight,
+  sliderBox,
+  sliderLabel,
+  sliderStyle,
+} from '../styles'
 
 const contentType = [
   'Fun',
@@ -95,7 +106,7 @@ const options: Record<string, string[]> = {
 
 export default function HomePage() {
   const [selectedContent, setSelectedContent] = useState('Fun')
-  const [value, setValue] = useState<string | null>('select')
+  const [value, setValue] = useState<string | null>('Select')
   const [inputValue, setInputValue] = useState('')
 
   return (
@@ -127,6 +138,7 @@ export default function HomePage() {
               sx={{
                 p: 1,
                 mx: 1,
+                mb: 1,
                 color: '#fff',
                 borderColor: selectedContent !== value ? '#fff' : 'none',
               }}
@@ -150,29 +162,13 @@ export default function HomePage() {
             }}
             id="controllable-states"
             options={options[selectedContent]}
-            sx={{
-              width: 300,
-              borderRadius: 2,
-              color: '#fff',
-            }}
+            sx={autocompleteStyle}
             renderInput={(params) => (
               <TextField
                 {...params}
                 size="small"
                 placeholder="Select"
-                sx={{
-                  '& .MuiInputBase-root': {
-                    color: '#fff',
-                    borderRadius: 2,
-                    backgroundColor: '#3A394080',
-                    '&.Mui-focused fieldset': {
-                      borderRadius: 2,
-                      border: '1px solid transparent',
-                      borderImageSlice: 15,
-                      borderImageSource: 'linear-gradient(#523FD7, #FF7DFF)',
-                    },
-                  },
-                }}
+                sx={autocompleteInput}
               />
             )}
           />
@@ -180,39 +176,16 @@ export default function HomePage() {
         <h1 className={styles.question}>
           Set the number of words for output text.
         </h1>
-        <Box
-          sx={{
-            width: 300,
-            backgroundColor: '#09090d',
-            borderRadius: 2,
-            alignItems: 'center',
-            display: { xs: 'flex', md: 'flex' },
-          }}
-        >
-          <span style={{ color: '#fff', padding: 10 }}>100</span>
+        <Box sx={sliderBox}>
+          <span style={sliderLabel}>100</span>
           <Slider
             size="small"
             valueLabelDisplay="on"
             min={100}
             max={1000}
-            sx={{
-              '& .MuiSlider-valueLabel': {
-                '&::before': {
-                  display: 'none',
-                },
-                color: '#fff',
-                backgroundColor: '#523FD7',
-                borderRadius: 4,
-              },
-              '& .MuiSlider-thumb': {
-                color: '#FF7DFF',
-              },
-              '& .MuiSlider-track': {
-                background: 'linear-gradient(to right, #523FD7, #FF7DFF)',
-              },
-            }}
+            sx={sliderStyle}
           />
-          <span style={{ color: '#fff', padding: 10 }}>1000</span>
+          <span style={sliderLabel}>1000</span>
         </Box>
       </main>
       <Box
@@ -228,33 +201,17 @@ export default function HomePage() {
           aria-label="account of current user"
           aria-haspopup="true"
           color="inherit"
-          sx={{
-            width: '80%',
-            mx: 2,
-            px: 2,
-            borderRadius: 10,
-            backgroundColor: 'transparent',
-            border: '1px solid #fff',
-            color: '#fff',
-          }}
+          sx={backButton}
         >
-          Back
+          <span className={styles.backButton}>Back</span>
         </IconButton>
         <IconButton
-          size="large"
+          size="medium"
           edge="end"
           aria-label="account of current user"
           aria-haspopup="true"
           color="inherit"
-          sx={{
-            width: '80%',
-            mt: 2,
-            mx: 2,
-            px: 2,
-            borderRadius: 10,
-            backgroundColor: '#fff',
-            border: '1px solid #fff',
-          }}
+          sx={nextButton}
         >
           <span className={styles.nextButton}>Next</span>
         </IconButton>
@@ -271,16 +228,9 @@ export default function HomePage() {
             aria-label="account of current user"
             aria-haspopup="true"
             color="inherit"
-            sx={{
-              ml: 2,
-              px: 2,
-              borderRadius: 10,
-              backgroundColor: 'transparent',
-              border: '1px solid #fff',
-              color: '#fff',
-            }}
+            sx={footerBackButton}
           >
-            Back
+            <span className={styles.backButton}>Back</span>
           </IconButton>
           <IconButton
             size="medium"
@@ -288,31 +238,11 @@ export default function HomePage() {
             aria-label="account of current user"
             aria-haspopup="true"
             color="inherit"
-            sx={{
-              mr: 2,
-              px: 2,
-              borderRadius: 10,
-              backgroundColor: '#fff',
-              border: '1px solid #fff',
-            }}
+            sx={footerNextButton}
           >
             <span className={styles.nextButton}>Next</span>
-            <ChevronRightIcon
-              fontSize="small"
-              sx={{
-                background: 'linear-gradient(to right, #523FD7, #FF7DFF)',
-                textFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            />
-            <ChevronRightIcon
-              fontSize="medium"
-              sx={{
-                background: 'linear-gradient(to right, #523FD7, #FF7DFF)',
-                textFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            />
+            <ChevronRightIcon fontSize="small" sx={nextButtonArrowRight} />
+            <ChevronRightIcon fontSize="medium" sx={nextButtonArrowRight} />
           </IconButton>
         </footer>
       </Box>
